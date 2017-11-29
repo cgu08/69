@@ -1,0 +1,48 @@
+#include "trie.cpp"
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int main(int argc, char* argv[]) {
+    // Initialize trie up here
+    Trie myTrie = *new Trie();
+
+    // parse input lines until I find newline
+    for(string line; getline(cin, line) && line.compare(""); ) {
+        stringstream ss(line);
+        string string_weight;
+        ss >> string_weight;
+        int weight = stoi(string_weight);
+
+        // I am just going to put these words into a vector
+        // you probably want to put them in your trie
+
+        vector<string> phrase = {};
+        for(string word; ss >> word;) {
+            phrase.push_back(word);
+        }
+
+
+        myTrie.add(phrase, weight, &myTrie.root);
+
+        vector<string> ans = {};
+
+
+
+    }
+    // parse query line
+    string query;
+    getline(cin, query);
+    stringstream ss(query);
+    vector<string> search = {};
+    for (string query; ss >> query;) {
+        search.push_back(query);
+    }
+
+    myTrie.get(search);
+
+    return 0;
+}
